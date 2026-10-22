@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asistente de Animales Exóticos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <main class="contenedor">
+    <header class="encabezado">
+      <p class="nota">Cuaderno de campo</p>
+      <h1>Cuidados de animales exóticos</h1>
+      <p class="subtitulo">Pregunta sobre alimentación, hábitat, salud o comportamiento de tu mascota.</p>
+    </header>
+
+    <section class="chat" id="chat" aria-live="polite">
+      <div class="mensaje bot">
+        ¡Hola! Soy tu asistente. Cuéntame qué animal tienes, por ejemplo una iguana, un gecko, un loro o una chinchilla.
+      </div>
+    </section>
+
+    <div class="sugerencias">
+      <button type="button" class="chip">¿Qué come una iguana?</button>
+      <button type="button" class="chip">Temperatura de un gecko leopardo</button>
+      <button type="button" class="chip">Cuidados de una chinchilla</button>
+    </div>
+
+    <form class="formulario" id="formulario" autocomplete="off">
+      <label for="entrada" class="sr-only">Escribe tu pregunta</label>
+      <input type="text" id="entrada" placeholder="Escribe tu pregunta..." maxlength="500" required>
+      <button type="submit" id="enviar">Enviar</button>
+    </form>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

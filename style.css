@@ -1,0 +1,214 @@
+:root {
+  --musgo: #1d2a22;
+  --musgo-claro: #2c3d31;
+  --papel: #f1e8d4;
+  --tinta: #22201a;
+  --ocre: #c98b2b;
+  --borde: #4a5b4e;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--musgo);
+  color: var(--papel);
+  font-family: var(--sans);
+  line-height: 1.6;
+}
+
+.contenedor {
+  max-width: 760px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.encabezado {
+  border-bottom: 1px solid var(--borde);
+  padding-bottom: 1.25rem;
+}
+
+.nota {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ocre);
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.subtitulo {
+  margin: 0.5rem 0 0;
+  color: #c9c2ae;
+  max-width: 56ch;
+}
+
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-height: 300px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.mensaje {
+  max-width: 85%;
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  animation: aparecer 0.3s ease-out;
+}
+
+.mensaje.bot {
+  align-self: flex-start;
+  background: var(--papel);
+  color: var(--tinta);
+  border-bottom-left-radius: 4px;
+}
+
+.mensaje.usuario {
+  align-self: flex-end;
+  background: var(--ocre);
+  color: #1b1408;
+  border-bottom-right-radius: 4px;
+  font-weight: 700;
+}
+
+.mensaje.escribiendo {
+  color: var(--tinta);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.sugerencias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--papel);
+  background: transparent;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.chip:hover,
+.chip:focus-visible {
+  border-color: var(--ocre);
+  background: var(--musgo-claro);
+  outline: none;
+}
+
+.formulario {
+  display: flex;
+  gap: 0.6rem;
+  position: sticky;
+  bottom: 0.75rem;
+}
+
+.formulario input {
+  flex: 1;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--borde);
+  background: var(--musgo-claro);
+  color: var(--papel);
+}
+
+.formulario input::placeholder {
+  color: #9fa892;
+}
+
+.formulario input:focus-visible {
+  outline: 2px solid var(--ocre);
+  outline-offset: 2px;
+}
+
+.formulario button {
+  font: inherit;
+  font-weight: 700;
+  padding: 0 1.3rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--ocre);
+  color: #1b1408;
+  cursor: pointer;
+}
+
+.formulario button:hover,
+.formulario button:focus-visible {
+  filter: brightness(1.08);
+  outline: 2px solid var(--papel);
+  outline-offset: 2px;
+}
+
+.formulario button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mensaje {
+    animation: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .contenedor {
+    padding-top: 1.5rem;
+  }
+  .mensaje {
+    max-width: 94%;
+  }
+  .formulario {
+    flex-direction: row;
+  }
+}
